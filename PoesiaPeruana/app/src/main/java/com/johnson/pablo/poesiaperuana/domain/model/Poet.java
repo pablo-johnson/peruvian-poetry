@@ -15,6 +15,7 @@ public class Poet {
     private String wikiUrl;
     private List<Poem> poems;
     private String imageUrl;
+    private String city;
 
     public String getName() {
         return name;
@@ -70,5 +71,13 @@ public class Poet {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

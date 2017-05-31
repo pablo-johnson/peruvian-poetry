@@ -5,10 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.johnson.pablo.poesiaperuana.R;
 import com.johnson.pablo.poesiaperuana.domain.model.Poet;
+import com.johnson.pablo.poesiaperuana.presentation.utils.media.ImageFactory;
+import com.johnson.pablo.poesiaperuana.presentation.utils.media.loaders.ImageLoader;
 
 import java.util.List;
 
@@ -37,6 +40,10 @@ public class PoetsRecyclerViewAdapter extends RecyclerView.Adapter<PoetsRecycler
     public void onBindViewHolder(ViewHolder holder, int position) {
         Poet poet = poets.get(position);
         holder.poetName.setText(poet.getName());
+        holder.poetDateLife.setText(poet.getBirthDate());
+        holder.poetCity.setText(poet.getCity());
+        ImageFactory.getLoader().loadFromUrl(poet.getImageUrl(), holder.poetImageView,
+                ImageLoader.ImageTransformation.CIRCLE, null);
     }
 
     @Override
@@ -48,6 +55,12 @@ public class PoetsRecyclerViewAdapter extends RecyclerView.Adapter<PoetsRecycler
 
         @BindView(R.id.poetName)
         TextView poetName;
+        @BindView(R.id.poetDateLife)
+        TextView poetDateLife;
+        @BindView(R.id.poetCity)
+        TextView poetCity;
+        @BindView(R.id.poetImageView)
+        ImageView poetImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
