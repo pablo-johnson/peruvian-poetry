@@ -5,19 +5,9 @@
     android:orientation="vertical"
     tools:context="com.johnson.pablo.poesiaperuana.presentation.poetsList.PoetsListFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HOLA HOLA HOLA" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/poetsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HOLA HOLA HOLA" />
 
 </LinearLayout>
