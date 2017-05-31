@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "952067942650",
+    "firebase_url": "https://poesiaperuana-bd024.firebaseio.com",
+    "project_id": "poesiaperuana-bd024",
+    "storage_bucket": "poesiaperuana-bd024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952067942650:android:aa2df0ad32aeab37",
+        "android_client_info": {
+          "package_name": "com.johnson.pablo.poesiaperuana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952067942650-pk4anab3g1s16joosltn5vvu655990v3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.johnson.pablo.poesiaperuana",
+            "certificate_hash": "a55e91d9efea65e036ee78146a1d2b13834e19b8"
+          }
+        },
+        {
+          "client_id": "952067942650-ina8p5024tej33m2200qorttbptqgdr1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvpo_ipOF5u9UIM3urFpVXK3FiIgs21hU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952067942650-ina8p5024tej33m2200qorttbptqgdr1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
