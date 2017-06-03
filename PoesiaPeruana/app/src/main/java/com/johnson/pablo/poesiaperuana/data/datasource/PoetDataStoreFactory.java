@@ -2,6 +2,8 @@ package com.johnson.pablo.poesiaperuana.data.datasource;
 
 import com.johnson.pablo.poesiaperuana.data.datasource.db.DbPoetDataStore;
 import com.johnson.pablo.poesiaperuana.data.datasource.rest.RestPoetsDataStore;
+import com.johnson.pablo.poesiaperuana.presentation.platform.AndroidPlatform;
+import com.johnson.pablo.poesiaperuana.presentation.platform.Platform;
 
 
 /**
@@ -23,7 +25,7 @@ public class PoetDataStoreFactory {
                 PoetDataStore = new RestPoetsDataStore();
                 break;
             case DB:
-                PoetDataStore = new DbPoetDataStore();
+                PoetDataStore = new DbPoetDataStore(((AndroidPlatform) Platform.get()).getContext());
                 break;
         }
         return PoetDataStore;

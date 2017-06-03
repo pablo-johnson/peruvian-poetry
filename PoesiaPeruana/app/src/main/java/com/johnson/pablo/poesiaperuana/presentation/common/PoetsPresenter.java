@@ -1,6 +1,9 @@
 package com.johnson.pablo.poesiaperuana.presentation.common;
 
-import io.reactivex.observers.DisposableObserver;
+import org.reactivestreams.Subscription;
+
+import io.reactivex.FlowableSubscriber;
+import io.reactivex.annotations.NonNull;
 
 /**
  * @author Pablo Johnsonn (pablo.88j@gmail.com)
@@ -25,7 +28,12 @@ public abstract class PoetsPresenter<T extends PoetsView> {
         view.showError(message);
     }
 
-    protected abstract class PresenterSubscriber<K> extends DisposableObserver<K> {
+    protected abstract class PresenterSubscriber<K> implements FlowableSubscriber<K> {
+
+        @Override
+        public void onSubscribe(@NonNull Subscription s) {
+            s.request(1);
+        }
 
         @Override
         public void onNext(K response) {
@@ -34,17 +42,18 @@ public abstract class PoetsPresenter<T extends PoetsView> {
         }
 
         @Override
-        public void onError(Throwable e) {
+        public void onError(Throwable t) {
 
         }
 
         @Override
         public void onComplete() {
-            /**INGNORED*/
+
         }
 
         public abstract void onSuccess(K response);
 
         public abstract void onError(Error error);
     }
+
 }

@@ -8,7 +8,7 @@ import com.johnson.pablo.poesiaperuana.presentation.common.PoetsPresenter;
 
 import java.util.List;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -26,18 +26,21 @@ public class PoetsListPresenter extends PoetsPresenter<PoetsListView> {
 
 
     public void populatePoetsList() {
-        Observable<List<Poet>> observable = poetInteractor.loadPlaces();
+        view.showProgressDialog();
+        Flowable<List<Poet>> observable = poetInteractor.loadPoets();
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new PresenterSubscriber<List<Poet>>() {
                     @Override
                     public void onSuccess(List<Poet> poets) {
+                        view.dismissProgressDialog();
                         view.populatePoetsList(poets);
                     }
 
                     @Override
                     public void onError(Error error) {
-
+                        view.dismissProgressDialog();
+                        view.showError(error.getMessage());
                     }
                 });
     }

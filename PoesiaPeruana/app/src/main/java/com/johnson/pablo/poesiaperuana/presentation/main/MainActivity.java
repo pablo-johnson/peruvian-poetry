@@ -1,4 +1,4 @@
-package com.johnson.pablo.poesiaperuana.presentation;
+package com.johnson.pablo.poesiaperuana.presentation.main;
 
 import android.os.Bundle;
 
@@ -13,7 +13,7 @@ public class MainActivity extends PoetsActivity implements PoetsListFragment.OnF
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
             PoetsListFragment poetsListFragment = PoetsListFragment.newInstance();
-            replaceFragment(poetsListFragment, true);
+            replaceFragment(poetsListFragment, false);
         }
     }
 

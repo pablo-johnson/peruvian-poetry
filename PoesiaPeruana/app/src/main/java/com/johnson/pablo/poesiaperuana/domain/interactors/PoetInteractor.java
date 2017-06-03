@@ -5,6 +5,7 @@ import com.johnson.pablo.poesiaperuana.domain.repository.PoetRepository;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 
 /**
@@ -17,7 +18,7 @@ public class PoetInteractor {
         this.poetRepository = poetRepository;
     }
 
-    public Observable<List<Poet>> loadPlaces() {
+    public Flowable<List<Poet>> loadPoets() {
         return poetRepository.loadPoets();
     }
 }

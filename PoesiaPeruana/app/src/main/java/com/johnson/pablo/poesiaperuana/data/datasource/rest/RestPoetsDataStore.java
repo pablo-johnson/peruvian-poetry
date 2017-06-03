@@ -2,10 +2,11 @@ package com.johnson.pablo.poesiaperuana.data.datasource.rest;
 
 import com.johnson.pablo.poesiaperuana.data.datasource.PoetDataStore;
 import com.johnson.pablo.poesiaperuana.domain.model.Poet;
+import com.johnson.pablo.poesiaperuana.domain.model.Version;
 
 import java.util.List;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 
 /**
@@ -13,15 +14,30 @@ import io.reactivex.Observable;
  */
 public class RestPoetsDataStore implements PoetDataStore {
 
-    private final PoetsApiService poetsApiInterface;
+    private final PoetsApi poetsApiInterface;
 
     public RestPoetsDataStore() {
-        poetsApiInterface = PoetsApi.get().getRetrofitService();
+        poetsApiInterface = PoetsApiService.get().getRetrofitService();
     }
 
     @Override
-    public Observable<List<Poet>> loadPoets() {
+    public Flowable<List<Poet>> loadPoets() {
         return poetsApiInterface.loadPoets();
+    }
+
+    @Override
+    public void savePoets(List<Poet> poets) {
+        //Not used
+    }
+
+    @Override
+    public Flowable<Version> getPoetsVersion() {
+        return poetsApiInterface.getPoetsVersion();
+    }
+
+    @Override
+    public void setPoetVersion(Version version) {
+        //Not used
     }
 
 }
