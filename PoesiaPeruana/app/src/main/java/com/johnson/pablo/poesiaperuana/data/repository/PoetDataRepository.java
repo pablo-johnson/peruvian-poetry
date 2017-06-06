@@ -6,6 +6,8 @@ import com.johnson.pablo.poesiaperuana.data.datasource.PoetDataStoreFactory;
 import com.johnson.pablo.poesiaperuana.domain.model.Poet;
 import com.johnson.pablo.poesiaperuana.domain.model.Version;
 import com.johnson.pablo.poesiaperuana.domain.repository.PoetRepository;
+import com.johnson.pablo.poesiaperuana.presentation.platform.AndroidPlatform;
+import com.johnson.pablo.poesiaperuana.presentation.platform.Platform;
 
 import org.reactivestreams.Publisher;
 
@@ -46,7 +48,6 @@ public class PoetDataRepository implements PoetRepository {
 
         final PoetDataStore dbPoetDataStore = this.poetDataStoreFactory
                 .create(PoetDataStoreFactory.DB);
-//        dbPoetDataStore.setPoetVersion(new Version(0));
         Flowable<Version> dbVersion = Flowable.create(new FlowableOnSubscribe<Version>() {
             @Override
             public void subscribe(@NonNull FlowableEmitter<Version> emitter) throws Exception {
@@ -77,5 +78,17 @@ public class PoetDataRepository implements PoetRepository {
                 return flowable;
             }
         });
+    }
+
+    @Override
+    public void initPoetData() {
+        if (!((AndroidPlatform) Platform.get()).openDefaultSharedPreferences()
+                .getBoolean("PoetDataInitialized", false)) {
+            final PoetDataStore dbPoetDataStore = this.poetDataStoreFactory
+                    .create(PoetDataStoreFactory.DB);
+            dbPoetDataStore.setPoetVersion(new Version(0.0));
+            ((AndroidPlatform) Platform.get()).openDefaultSharedPreferences().edit()
+                    .putBoolean("PoetDataInitialized", true).apply();
+        }
     }
 }

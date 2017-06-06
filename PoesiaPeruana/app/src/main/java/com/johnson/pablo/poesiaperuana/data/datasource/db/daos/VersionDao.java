@@ -14,7 +14,7 @@ import io.reactivex.Flowable;
 @Dao
 public interface VersionDao {
 
-    @Query("SELECT * FROM version limit 1")
+    @Query("SELECT * FROM version order by version desc limit 1 ")
     Flowable<VersionEntity> getMaxVersion();
 
     @Insert

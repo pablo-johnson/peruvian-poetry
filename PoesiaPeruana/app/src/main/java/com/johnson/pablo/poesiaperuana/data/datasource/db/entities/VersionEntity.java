@@ -13,7 +13,7 @@ public class VersionEntity {
 
     @PrimaryKey(autoGenerate = true)
     private int uid;
-    private Integer version;
+    private Double version;
 
     public VersionEntity() {
     }
@@ -30,11 +30,11 @@ public class VersionEntity {
         this.uid = uid;
     }
 
-    public Integer getVersion() {
+    public Double getVersion() {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(Double version) {
         this.version = version;
     }
 

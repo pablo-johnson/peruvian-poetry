@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 
@@ -46,7 +45,7 @@ public class DbPoetDataStore implements PoetDataStore {
     @Override
     public void savePoets(List<Poet> poets) {
         List<PoetEntity> poetEntities = new ArrayList<>();
-        for (Poet poet : poets){
+        for (Poet poet : poets) {
             PoetEntity poetEntity = new PoetEntity(poet);
             poetEntities.add(poetEntity);
         }

@@ -5,20 +5,20 @@ package com.johnson.pablo.poesiaperuana.domain.model;
  */
 public class Version {
 
-    private Integer version;
+    private Double version;
 
     public Version() {
     }
 
-    public Version(int i) {
-        version = i;
+    public Version(Double version) {
+        this.version = version;
     }
 
-    public Integer getVersion() {
+    public Double getVersion() {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(Double version) {
         this.version = version;
     }
 }

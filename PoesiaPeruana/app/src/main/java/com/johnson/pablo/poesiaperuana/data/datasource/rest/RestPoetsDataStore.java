@@ -27,7 +27,7 @@ public class RestPoetsDataStore implements PoetDataStore {
 
     @Override
     public void savePoets(List<Poet> poets) {
-        //Not used
+        throw new UnsupportedOperationException("Not implemented, yet");
     }
 
     @Override
@@ -37,7 +37,7 @@ public class RestPoetsDataStore implements PoetDataStore {
 
     @Override
     public void setPoetVersion(Version version) {
-        //Not used
+        throw new UnsupportedOperationException("Not implemented, yet");
     }
 
 }

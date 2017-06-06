@@ -9,8 +9,7 @@ import android.content.SharedPreferences;
  */
 public class AndroidPlatform extends Platform {
 
-    public static final String LABELS_FILE_NAME = "labelsFileName";
-    private static final String DEFAULT_FILE = "defaultName";
+    private static final String DEFAULT_FILE = "poetDb";
 
     private final Context context;
 

@@ -14,4 +14,6 @@ import io.reactivex.Observable;
 public interface PoetRepository {
 
     Flowable<List<Poet>> loadPoets();
+
+    void initPoetData();
 }
