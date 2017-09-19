@@ -19,4 +19,12 @@ public interface PoetDataStore {
     Flowable<Version> getPoetsVersion();
 
     void setPoetVersion(Version version);
+
+    Flowable<List<Poet>> loadFavoritePoets();
+
+    void saveFavoritePoet(Poet poet);
+
+    void eraseFavoritePoet(Poet poet);
+
+    void deleteAllPoets();
 }

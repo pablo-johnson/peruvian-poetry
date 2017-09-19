@@ -1,6 +1,12 @@
 package com.johnson.pablo.poesiaperuana.presentation.common;
 
+import android.util.Log;
+
+import com.johnson.pablo.poesiaperuana.domain.model.Error;
+
 import org.reactivestreams.Subscription;
+
+import java.net.UnknownHostException;
 
 import io.reactivex.FlowableSubscriber;
 import io.reactivex.annotations.NonNull;
@@ -28,7 +34,7 @@ public abstract class PoetsPresenter<T extends PoetsView> {
         view.showError(message);
     }
 
-    protected abstract class PresenterSubscriber<K> implements FlowableSubscriber<K> {
+    protected abstract class PoetSubscriber<K> implements FlowableSubscriber<K> {
 
         @Override
         public void onSubscribe(@NonNull Subscription s) {
@@ -43,7 +49,15 @@ public abstract class PoetsPresenter<T extends PoetsView> {
 
         @Override
         public void onError(Throwable t) {
-
+            Error error = new Error();
+            error.setErrorCode(t.getMessage());
+            if (t.getCause() instanceof UnknownHostException) {
+                Log.e("PoemasPeruanos", t.getMessage(), t);
+                onError(error);
+            } else {
+                onError(error);
+            }
+            Log.e("PoemasPeruanos", t.getMessage(), t);
         }
 
         @Override

@@ -16,6 +16,7 @@ public class Poet {
     private List<Poem> poems;
     private String imageUrl;
     private String city;
+    private transient boolean isFavorite;
 
     public String getName() {
         return name;
@@ -79,5 +80,13 @@ public class Poet {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }

@@ -20,6 +20,7 @@ public class MainActivity extends PoetsActivity implements PoetsListFragment.OnF
             PoetsListFragment poetsListFragment = PoetsListFragment.newInstance();
             replaceFragment(poetsListFragment, false);
         }
+        mainPresenter.loadPoetsFromNetwork();
     }
 
     @Override

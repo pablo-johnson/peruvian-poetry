@@ -15,5 +15,7 @@ public interface PoetRepository {
 
     Flowable<List<Poet>> loadPoets();
 
+    void loadPoetsFromNetwork();
+
     void initPoetData();
 }

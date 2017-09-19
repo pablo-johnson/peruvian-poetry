@@ -3,6 +3,7 @@ package com.johnson.pablo.poesiaperuana.presentation.poetsList;
 import com.johnson.pablo.poesiaperuana.data.datasource.PoetDataStoreFactory;
 import com.johnson.pablo.poesiaperuana.data.repository.PoetDataRepository;
 import com.johnson.pablo.poesiaperuana.domain.interactors.PoetInteractor;
+import com.johnson.pablo.poesiaperuana.domain.model.Error;
 import com.johnson.pablo.poesiaperuana.domain.model.Poet;
 import com.johnson.pablo.poesiaperuana.presentation.common.PoetsPresenter;
 
@@ -30,7 +31,7 @@ public class PoetsListPresenter extends PoetsPresenter<PoetsListView> {
         Flowable<List<Poet>> observable = poetInteractor.loadPoets();
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new PresenterSubscriber<List<Poet>>() {
+                .subscribe(new PoetSubscriber<List<Poet>>() {
                     @Override
                     public void onSuccess(List<Poet> poets) {
                         view.dismissProgressDialog();
@@ -40,7 +41,7 @@ public class PoetsListPresenter extends PoetsPresenter<PoetsListView> {
                     @Override
                     public void onError(Error error) {
                         view.dismissProgressDialog();
-                        view.showError(error.getMessage());
+                        view.showError(error.getErrorMessage());
                     }
                 });
     }

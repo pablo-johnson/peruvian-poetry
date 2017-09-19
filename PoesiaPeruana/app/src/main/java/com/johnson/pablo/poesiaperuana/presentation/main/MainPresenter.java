@@ -20,4 +20,8 @@ public class MainPresenter extends PoetsPresenter<PoetsView> {
         poetInteractor.initPoetData();
     }
 
+    public void loadPoetsFromNetwork() {
+        PoetInteractor poetInteractor = new PoetInteractor(new PoetDataRepository(new PoetDataStoreFactory()));
+        poetInteractor.loadPoetsFromNetwork();
+    }
 }

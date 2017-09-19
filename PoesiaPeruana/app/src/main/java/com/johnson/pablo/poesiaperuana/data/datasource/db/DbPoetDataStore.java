@@ -29,8 +29,39 @@ public class DbPoetDataStore implements PoetDataStore {
     }
 
     @Override
+    public Flowable<List<Poet>> loadFavoritePoets() {
+        return mDb.poetDao().loadFavorites().flatMap(new Function<List<PoetEntity>, Publisher<List<Poet>>>() {
+            @Override
+            public Publisher<List<Poet>> apply(@NonNull List<PoetEntity> poetEntities) throws Exception {
+                List<Poet> poets = new ArrayList<>();
+                for (PoetEntity poetEntity : poetEntities) {
+                    poets.add(poetEntity.toPoet());
+                }
+                return Flowable.fromArray(poets);
+            }
+        });
+    }
+
+    @Override
+    public void saveFavoritePoet(Poet poet) {
+        PoetEntity poetEntity = new PoetEntity(poet);
+        mDb.poetDao().updatePoet(poetEntity);
+    }
+
+    @Override
+    public void eraseFavoritePoet(Poet poet) {
+        PoetEntity poetEntity = new PoetEntity(poet);
+        mDb.poetDao().delete(poetEntity);
+    }
+
+    @Override
+    public void deleteAllPoets() {
+        mDb.poetDao().deleteAll();
+    }
+
+    @Override
     public Flowable<List<Poet>> loadPoets() {
-        return mDb.poetDao().getAll().flatMap(new Function<List<PoetEntity>, Publisher<List<Poet>>>() {
+        return mDb.poetDao().loadAll().flatMap(new Function<List<PoetEntity>, Publisher<List<Poet>>>() {
             @Override
             public Publisher<List<Poet>> apply(@NonNull List<PoetEntity> poetEntities) throws Exception {
                 List<Poet> poets = new ArrayList<>();

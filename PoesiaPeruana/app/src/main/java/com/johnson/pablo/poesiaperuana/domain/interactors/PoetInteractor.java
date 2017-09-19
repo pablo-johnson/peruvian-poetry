@@ -24,4 +24,8 @@ public class PoetInteractor {
     public void initPoetData() {
         poetRepository.initPoetData();
     }
+
+    public void loadPoetsFromNetwork() {
+        poetRepository.loadPoetsFromNetwork();
+    }
 }

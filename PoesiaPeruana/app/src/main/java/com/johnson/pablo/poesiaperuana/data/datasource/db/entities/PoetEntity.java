@@ -21,6 +21,7 @@ public class PoetEntity {
     //    private List<Poem> poems;
     private String imageUrl;
     private String city;
+    private boolean isFavorite;
 
     public PoetEntity() {
     }
@@ -33,6 +34,7 @@ public class PoetEntity {
         wikiUrl = poet.getWikiUrl();
         imageUrl = poet.getImageUrl();
         city = poet.getCity();
+        isFavorite = poet.isFavorite();
     }
 
     public int getUid() {
@@ -107,6 +109,14 @@ public class PoetEntity {
         this.city = city;
     }
 
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
     public Poet toPoet() {
         Poet poet = new Poet();
         poet.setName(name);
@@ -115,6 +125,7 @@ public class PoetEntity {
         poet.setDeadDate(deadDate);
         poet.setImageUrl(imageUrl);
         poet.setWikiUrl(wikiUrl);
+        poet.setFavorite(isFavorite);
         return poet;
     }
 }

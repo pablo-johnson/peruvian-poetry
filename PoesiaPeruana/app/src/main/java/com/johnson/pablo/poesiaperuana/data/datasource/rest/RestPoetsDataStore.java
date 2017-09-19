@@ -21,6 +21,26 @@ public class RestPoetsDataStore implements PoetDataStore {
     }
 
     @Override
+    public Flowable<List<Poet>> loadFavoritePoets() {
+        throw new UnsupportedOperationException("Not implemented, yet");
+    }
+
+    @Override
+    public void saveFavoritePoet(Poet poet) {
+        throw new UnsupportedOperationException("Not implemented, yet");
+    }
+
+    @Override
+    public void eraseFavoritePoet(Poet poet) {
+        throw new UnsupportedOperationException("Not implemented, yet");
+    }
+
+    @Override
+    public void deleteAllPoets() {
+        throw new UnsupportedOperationException("Not implemented, yet");
+    }
+
+    @Override
     public Flowable<List<Poet>> loadPoets() {
         return poetsApiInterface.loadPoets();
     }

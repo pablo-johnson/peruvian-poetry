@@ -32,7 +32,6 @@ public class PoetsListFragment extends PoetsFragment implements PoetsListView {
     public static PoetsListFragment newInstance() {
         PoetsListFragment fragment = new PoetsListFragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -53,7 +52,6 @@ public class PoetsListFragment extends PoetsFragment implements PoetsListView {
         super.onCreate(savedInstanceState);
         presenter = new PoetsListPresenter(this);
         presenter.populatePoetsList();
-
     }
 
     @Override
